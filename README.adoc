@@ -1,0 +1,61 @@
+# Text File Word Statistics
+
+This project provides an API for reading text files and reporting on the word statistics.
+
+## Prerequisites
+
+- JDK11
+- Maven
+- Internet connection (for dependency resolution )
+
+## Installation
+
+Build the project using 'mvn install' from the project's root directory
+Include as a Maven dependency in your project. The GAV is:
+[source,xml]
+----
+<groupId>name.markwareham</groupId>
+<artifactId>text-file-stats</artifactId>
+<version>1.0</version>
+----
+
+Alternatively, include the jar in your project's build path.
+
+## Usage
+
+[source,java]
+----
+File textFile = new File("file/path/here/file.txt");<1>
+WordStats wordStats = new WordStats();<2>
+System.out.println(wordStats.produceReport());<3>
+----
+<1> Specify file
+<2> Construct an instance
+<3> Print out the report
+
+## Dev notes
+
+The project is a Maven project with no profiles or special configuration required.
+ 
+`mvn clean install` will build and place the dependency in your local repo ready for use.
+
+During the Maven run the project's code is checked against a slight variation of the 
+sun coding standards using checkstyle. If code does not meet these standards the build will fail.
+
+
+## Assumptions 
+
+- API means Java API. (There was no mention of network, web service, REST etc)
+- A word is any contiguous block of characters whether alphabetical, numerical, or special characters, or any combination of the three.
+- Punctuation at the end of a word is not included in word character counts (deduced from example average length)
+- The above punctuation could be a full stop or comma
+- Assumed file to be loaded on and stats are then immutable. (if the file changes the stats will not)
+- Average is to be reported to 3 decimal places (as in example)
+- Only the Latin character set is required
+
+
+## Limitations
+
+- Maximum length of a word is 2147483647
+- Maximum number of words is 9,223,372,036,854,775,807 
+
