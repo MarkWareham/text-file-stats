@@ -25,9 +25,9 @@ Alternatively, include the jar in your project's build path.
 
 [source,java]
 ----
-File textFile = new File("file/path/here/file.txt");<1>
-WordStats wordStats = new WordStats();<2>
-System.out.println(wordStats.produceReport());<3>
+File textFile = new File("file/path/here/file.txt");
+WordStats wordStats = new WordStats(textFile);
+System.out.println(wordStats.produceReport());
 ----
 <1> Specify file
 <2> Construct an instance
